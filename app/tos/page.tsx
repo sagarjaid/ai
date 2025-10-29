@@ -57,23 +57,23 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`Last Updated: 2025-10-29
 
-Welcome to ShipFast!
+Welcome to AIFORJR!
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+These Terms of Service ("Terms") govern your use of the AIFORJR website at https://aiforjr.com ("Website") and the services provided by AIFORJR. By using our Website and services, you agree to these Terms.
 
-1. Description of ShipFast
+1. Description of AIFORJR
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+AIFORJR provides an AI Tutor for kids, tailored to each child's learning style and pace.
 
 2. Ownership and Usage Rights
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+When you purchase a package or subscription from AIFORJR, you receive access to our services and content for personal, non-commercial use according to your plan. You may not resell, redistribute, or sublicense access to our services.
 
 3. User Data and Privacy
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://aiforjr.com/privacy-policy.
 
 4. Non-Personal Data Collection
 
@@ -87,9 +87,9 @@ These Terms are governed by the laws of France.
 
 We may update these Terms from time to time. Users will be notified of any changes via email.
 
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
+For any questions or concerns regarding these Terms of Service, please contact us at hello@aiforjr.com.
 
-Thank you for using ShipFast!`}
+Thank you for using AIFORJR!`}
         </pre>
       </div>
     </main>

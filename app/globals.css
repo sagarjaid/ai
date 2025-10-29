@@ -4,7 +4,9 @@
 }
 
 @theme {
-  --font-display: "Satoshi", "sans-serif";
+  /* Font families - using CSS variables from Next.js font loader */
+  --font-family-sans: var(--font-main), "sans-serif";
+  --font-nord: var(--font-nord), "sans-serif";
   
   --animate-shimmer: shimmer 3s ease-out infinite alternate;
   --animate-opacity: opacity 0.25s ease-in-out;
@@ -46,6 +48,7 @@
 html,
 body {
   scroll-behavior: smooth !important;
+  font-family: var(--font-main), sans-serif;
 }
 
 progress::-webkit-progress-value {
@@ -73,4 +76,9 @@ progress::-webkit-progress-value {
 
 .btn {
   text-transform: capitalize !important;
+}
+
+/* Tailwind utility class for ABCGintoNordVariable font */
+.font-nord {
+  font-family: var(--font-nord), sans-serif;
 }
