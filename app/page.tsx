@@ -66,9 +66,9 @@ export default function Home() {
               </h1>
 
               <p className="text-base font-normal text-gray-600 leading-relaxed">
-                Grow Beyond the Classroom with world's first AI Tutor that is
-                tailored to your child's learning style and pace. First Month is
-                Free!
+                Grow Beyond the Classroom with world&#39;s first AI Tutor that
+                is tailored to your child&#39;s learning style and pace. First
+                Month is Free!
               </p>
               <Link
                 href="/join"
