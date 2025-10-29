@@ -9,10 +9,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ categoryId: string }>;
 }) {
-  const resolvedParams = await params;
-  const category = categories.find(
-    (category) => category.slug === resolvedParams.categoryId
-  );
+  const { categoryId } = await params;
+  const category = categories.find((category) => category.slug === categoryId);
 
   return getSEOTags({
     title: `${category.title} | Blog by ${config.appName}`,
@@ -26,10 +24,8 @@ export default async function Category({
 }: {
   params: Promise<{ categoryId: string }>;
 }) {
-  const resolvedParams = await params;
-  const category = categories.find(
-    (category) => category.slug === resolvedParams.categoryId
-  );
+  const { categoryId } = await params;
+  const category = categories.find((category) => category.slug === categoryId);
   const articlesInCategory = articles
     .filter((article) =>
       article.categories.map((c) => c.slug).includes(category.slug)

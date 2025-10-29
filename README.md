@@ -14,10 +14,10 @@ Hey maker 👋 it's Marc from [ShipFast](https://shipfa.st/docs). Let's get your
 
 ## Links
 
--   [📚 Documentation](https://shipfa.st/docs)
--   [📣 Updates](https://shipfast.beehiiv.com/)
--   [🧑‍💻 Discord](https://shipfa.st/dashboard)
--   [🥇 Leaderboard](https://shipfa.st/leaderboard)
+- [📚 Documentation](https://shipfa.st/docs)
+- [📣 Updates](https://shipfast.beehiiv.com/)
+- [🧑‍💻 Discord](https://shipfa.st/dashboard)
+- [🥇 Leaderboard](https://shipfa.st/leaderboard)
 
 ## Support
 
@@ -29,10 +29,10 @@ Let's ship it, FAST ⚡️
 
 **📈 Grow your startup with [DataFast](https://datafa.st?ref=shipfast_readme)**
 
--   Analyze your traffic
--   Get insights on your customers
--   Make data-driven decisions
+- Analyze your traffic
+- Get insights on your customers
+- Make data-driven decisions
 
 ShipFast members get 30% OFF on all plans! 🎁
 
-![datafast](https://github.com/user-attachments/assets/0bf09937-31d1-41d7-82bc-234b5c359a93)
+![datafast](https://github.com/user-attachments/assets/2a9710f8-9a39-4593-b4bf-9ee933529870)
