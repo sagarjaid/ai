@@ -58,7 +58,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-6">
               <p className="text-gray-600 text-sm hidden md:block font-normal tracking-wide">
-                Personalized Education that works for your child
+                Grow Beyond the Classroom
               </p>
 
               <h1 className="text-4xl lg:text-6xl font-nord font-bold text-gray-900 leading-tight">
@@ -66,9 +66,9 @@ export default function Home() {
               </h1>
 
               <p className="text-base font-normal text-gray-600 leading-relaxed">
-                Grow Beyond the Classroom with world&#39;s first AI Tutor that
-                is tailored to your child&#39;s learning style and pace. First
-                Month is Free!
+                Learn Coding, AI and Math with the world&#39;s first AI Tutor
+                that is tailored to your child&#39;s learning style and pace.
+                First Month is Free!
               </p>
               <Link
                 href="/join"
@@ -78,6 +78,28 @@ export default function Home() {
               >
                 Join Waitlist
               </Link>
+
+              {/* <div className="mt-10">
+                <p className="text-gray-600 text-xs mb-4">
+                  Trusted by Parents from
+                </p>
+                <div className="flex flex-wrap items-center gap-6 opacity-60">
+                  <div className="text-gray-500 font-semibold text-lg">
+                    Coding
+                  </div>
+                  <div className="text-gray-500 font-semibold text-lg">•</div>
+
+                  <div className="text-gray-500 font-semibold text-lg">AI</div>
+                  <div className="text-gray-500 font-semibold text-lg">•</div>
+                  <div className="text-gray-500 font-semibold text-lg">
+                    Math
+                  </div>
+                  <div className="text-gray-500 font-semibold text-lg">•</div>
+                  <div className="text-gray-500 font-semibold text-lg">
+                    English
+                  </div>
+                </div>
+              </div> */}
 
               {/* Trusted By Section */}
               <div className="mt-10">
