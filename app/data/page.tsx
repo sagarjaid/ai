@@ -923,7 +923,6 @@ export default function Page(): React.ReactElement {
                         <HeaderWithTip label="Country" />
                       </th>
                       <th
-                        role="button"
                         onClick={() => {
                           setSortDir(
                             sortBy === "finalScore"
@@ -957,7 +956,6 @@ export default function Page(): React.ReactElement {
                         </span>
                       </th>
                       <th
-                        role="button"
                         onClick={() => {
                           setSortDir(
                             sortBy === "marketScore"
@@ -991,7 +989,6 @@ export default function Page(): React.ReactElement {
                         </span>
                       </th>
                       <th
-                        role="button"
                         onClick={() => {
                           setSortDir(
                             sortBy === "opsScore"
@@ -1025,7 +1022,6 @@ export default function Page(): React.ReactElement {
                         </span>
                       </th>
                       <th
-                        role="button"
                         onClick={() => {
                           setSortDir(
                             sortBy === "affinityScore"
@@ -1105,7 +1101,6 @@ export default function Page(): React.ReactElement {
                       ].map(([key, label, defDir]) => (
                         <th
                           key={key as string}
-                          role="button"
                           onClick={() => {
                             if (sortBy === (key as string)) {
                               setSortDir(sortDir === "asc" ? "desc" : "asc");

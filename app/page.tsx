@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
-import heroImage from "@/app/hero-2.png";
+import heroImage from "@/app/coding.png";
 import logoMain from "@/app/logo-main.svg";
 import logoLight from "@/app/logo-light.svg";
 
@@ -34,7 +34,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="bg-red-600 font-nord text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
           >
-            Join Waitlist
+            Join Beta
           </Link>
         </nav>
       </header>
@@ -66,9 +66,9 @@ export default function Home() {
               </h1>
 
               <p className="text-base font-normal text-gray-600 leading-relaxed">
-                Learn Coding, AI and Math with the world&#39;s first AI Tutor
-                that is tailored to your child&#39;s learning style and pace.
-                First Month is Free!
+                Learn Coding, AI, Math, English and Science with the world&#39;s
+                first AI Tutor that is tailored to your child&#39;s learning
+                style and pace. First Month is Free!
               </p>
               <Link
                 href="/join"
@@ -76,7 +76,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors"
               >
-                Join Waitlist
+                Join Beta for 100% FREE
               </Link>
 
               {/* <div className="mt-10">
@@ -176,7 +176,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-white/90 hover:text-white text-sm"
                 >
-                  Join Waitlist
+                  Join Beta
                 </Link>
               </div>
 

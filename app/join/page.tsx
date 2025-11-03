@@ -34,8 +34,8 @@ export default async function Page() {
             </Link>
             <Link
               href="/"
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_self"
+              rel="noopener noreferrer nofollow"
               className="bg-red-600 font-nord text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
             >
               Back to Home
