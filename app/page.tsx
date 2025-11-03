@@ -3,8 +3,8 @@ import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 import heroImage from "@/app/coding.png";
-import logoMain from "@/app/logo-main.svg";
-import logoLight from "@/app/logo-light.svg";
+import logoMain from "@/app/logo-main.png";
+import logoLight from "@/app/logo-light.png";
 
 export const metadata = getSEOTags({
   title: `${config.appName} - AI Tutor for Kids`,

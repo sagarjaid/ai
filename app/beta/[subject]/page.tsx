@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 import codingImage from "@/app/coding.png";
-import logoMain from "@/app/logo-main.svg";
+import logoMain from "@/app/logo-main.png";
 import {
   Percent,
   Heart,
