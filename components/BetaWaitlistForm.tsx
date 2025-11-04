@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent, type ChangeEvent } from "react";
 import { toast } from "react-hot-toast";
 import { ArrowRight, Check, X } from "lucide-react";
 import logoMain from "@/app/logo-main.png";
@@ -59,7 +59,7 @@ export default function BetaWaitlistForm({
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Validate required fields
@@ -172,7 +172,7 @@ export default function BetaWaitlistForm({
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setFormData({
       ...formData,

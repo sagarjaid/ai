@@ -16,7 +16,7 @@ export default function FloatingJoinButton() {
 
   // Extract subject from pathname if on beta subject page
   const getSubjectFromPath = () => {
-    const match = pathname.match(/^\/beta\/([^\/]+)/);
+    const match = pathname.match(/^\/beta\/([^/]+)/);
     return match ? match[1].toLowerCase() : null;
   };
 
