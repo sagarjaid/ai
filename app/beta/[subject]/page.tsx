@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
+import FloatingJoinButton from "@/components/FloatingJoinButton";
+import HeroImage from "@/components/HeroImage";
 // Removed deprecated single images in favor of randomized set per subject
 import logoMain from "@/app/logo-main.png";
 import {
@@ -18,45 +20,37 @@ import aiReviewImage from "@/app/ai-review.png";
 import scienceReviewImage from "@/app/science-review.png";
 import englishReviewImage from "@/app/english-review.png";
 import codingReviewImage from "@/app/coding-review.png";
+import ctaPic1 from "@/app/cta-pic-1.png";
 
 import math1 from "@/app/math-1.png";
 import math2 from "@/app/math-2.png";
 import math3 from "@/app/math-3.png";
-import math4 from "@/app/math-1.png";
-import math5 from "@/app/math-5.png";
 import ai1 from "@/app/ai-1.png";
-import ai2 from "@/app/ai-4.png";
+import ai2 from "@/app/ai-2.png";
 import ai3 from "@/app/ai-3.png";
-import ai4 from "@/app/ai-4.png";
-import ai5 from "@/app/ai-5.png";
+
 import coding1 from "@/app/coding-1.png";
-import coding2 from "@/app/coding-1.png";
+import coding2 from "@/app/coding-2.png";
 import coding3 from "@/app/coding-3.png";
-import coding4 from "@/app/coding-4.png";
-import coding5 from "@/app/coding-5.png";
+
 import english1 from "@/app/english-1.png";
 import english2 from "@/app/english-2.png";
 import english3 from "@/app/english-3.png";
-import english4 from "@/app/english-4.png";
-import english5 from "@/app/english-5.png";
+
 import science1 from "@/app/sci-1.png";
 import science2 from "@/app/sci-2.png";
 import science3 from "@/app/sci-3.png";
-import science4 from "@/app/sci-4.png";
-import science5 from "@/app/sci-5.png";
 
-// Helper: random subject image selector (1-5) per subject
-const getRandomSubjectImage = (subjectKey: string) => {
+// Helper: get subject-specific images array
+const getSubjectImages = (subjectKey: string) => {
   const subjectToImages: Record<string, any[]> = {
-    math: [math1, math2, math3, math4, math5],
-    english: [english1, english2, english3, english4, english5],
-    ai: [ai1, ai2, ai3, ai4, ai5],
-    coding: [coding1, coding2, coding3, coding4, coding5],
-    science: [science1, science2, science3, science4, science5],
+    math: [math1, math2, math3],
+    english: [english1, english2, english3],
+    ai: [ai1, ai2, ai3],
+    coding: [coding1, coding2, coding3],
+    science: [science1, science2, science3],
   };
-  const images = subjectToImages[subjectKey] || subjectToImages.math;
-  const index = Math.floor(Math.random() * images.length);
-  return images[index];
+  return subjectToImages[subjectKey] || subjectToImages.math;
 };
 
 // Subject configuration
@@ -78,10 +72,10 @@ const subjectConfig: Record<
     ageRange: "Age 3-11",
     title: "Master Math with World's First AI Tutor",
     description:
-      "Learn Mathematics with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
+      "Learn Mathematics with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month",
     reviewImage: mathReviewImage,
     reviewText:
-      "Emma's math confidence has soared! The AI tutor makes learning fun and she's actually excited about homework now.",
+      "Emma's math confidence has soared! The AI tutor makes learning fun and she's actually excited about homework now",
     reviewAuthor: "Sarah, Parent of Emma (Age 8)",
   },
   english: {
@@ -89,7 +83,7 @@ const subjectConfig: Record<
     ageRange: "Age 3-11",
     title: "Master English with World's First AI Tutor",
     description:
-      "Learn English with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
+      "Learn English with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month",
     reviewImage: englishReviewImage,
     reviewText:
       "My daughter Mia went from struggling with reading to finishing her first chapter from a book. The progress is incredible!",
@@ -100,10 +94,10 @@ const subjectConfig: Record<
     ageRange: "Age 8-14",
     title: "Master AI with the World's First AI Tutor",
     description:
-      "Learn Artificial Intelligence with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
+      "Learn Artificial Intelligence with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month",
     reviewImage: aiReviewImage,
     reviewText:
-      "Sameer is building his own AI projects now! The personalized approach has unlocked his creativity and problem-solving skills.",
+      "Sameer is building his own AI projects now! The personalized approach has unlocked his creativity and problem-solving skills",
     reviewAuthor: "Rachana, Parent of Samer (Age 11)",
   },
   coding: {
@@ -111,11 +105,11 @@ const subjectConfig: Record<
     ageRange: "Age 6-15",
     title: "Master Coding with World's First AI Tutor",
     description:
-      "Learn Coding with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
+      "Learn Coding with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month",
     highlight: "Block based - Grade 1-5, JavaScript Web dev - Grade 6-9",
     reviewImage: codingReviewImage,
     reviewText:
-      "Well-structured courses have made coding fun for my son. I'm so glad I found this app.",
+      "Well-structured courses have made coding fun for my son. I'm so glad I found this app",
     reviewAuthor: "Sharyn, Parent of Jake (Age 9)",
   },
   science: {
@@ -123,10 +117,10 @@ const subjectConfig: Record<
     ageRange: "Age 3-11",
     title: "Master Science with World's First AI Tutor",
     description:
-      "Learn Science with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
+      "Learn Science with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month",
     reviewImage: scienceReviewImage,
     reviewText:
-      "Sophia asks more questions and understands concepts deeper. The AI tutor explains everything in ways that click for her.",
+      "Sophia asks more questions and understands concepts deeper. The AI tutor explains everything in ways that click for her",
     reviewAuthor: "David, Parent of Sophia (Age 9)",
   },
 };
@@ -156,7 +150,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
     subject === "ai"
       ? "AI"
       : subject.charAt(0).toUpperCase() + subject.slice(1);
-  const subjectImage = getRandomSubjectImage(subjectKey);
+  const subjectImages = getSubjectImages(subjectKey);
 
   return (
     <>
@@ -173,9 +167,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
             />
           </Link>
           <Link
-            href="/join"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/beta/${subject}?join=beta`}
             className="bg-red-600 font-nord text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
           >
             Join Beta
@@ -186,19 +178,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
       {/* Main Content */}
       <main className="bg-white">
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-8 py-16 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Column */}
-            <div className="aspect-[4/3] block md:hidden relative rounded-lg overflow-hidden">
-              <Image
-                src={subjectImage.src}
-                alt={`Child learning ${subjectTitle} with AI tutor`}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-
+        <section className="max-w-7xl mx-auto px-8 py-10 lg:py-16">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Text Content - First in DOM for desktop grid (left column) */}
             <div className="flex flex-col justify-center gap-6">
               <div className="flex gap-1">
                 <p className="text-gray-600 text-sm font-semibold tracking-wide">
@@ -219,16 +201,14 @@ export default async function BetaSubjectPage({ params }: PageProps) {
 
               <div className="flex flex-col justify-center gap-2 w-fit">
                 <Link
-                  href="/join"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/beta/${subject}?join=beta`}
                   className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors"
                 >
                   Join Beta for 100% FREE
                 </Link>
 
                 <p className="text-xs text-center text-gray-500">
-                  No credit card required, Only 3 Spots left this week.
+                  No credit card required, Only 3 Spots left this week
                 </p>
               </div>
 
@@ -258,17 +238,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Right Column - Image with Overlays */}
-            <div className="relative hidden md:block">
-              <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
-                <Image
-                  src={subjectImage.src}
-                  alt={`Child learning ${subjectTitle} with AI tutor`}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+            {/* Image - Second in DOM for desktop grid (right column), reversed on mobile to appear first */}
+            <div className="w-full">
+              <HeroImage images={subjectImages} />
             </div>
           </div>
         </section>
@@ -295,10 +267,10 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 stroke="currentColor"
               />
               <h3 className="text-xl font-black text-gray-900 mb-2">
-                6 Core modules
+                Designed by Experts
               </h3>
               <p className="text-gray-600 text-sm">
-                Learn 6-8 core modules of {subjectTitle.toLowerCase()} with AI.
+                Learn 6-8 core modules of {subjectTitle.toLowerCase()} with AI
               </p>
             </div>
             <div className="bg-red-600 rounded-xl p-6 py-10">
@@ -313,7 +285,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 100% FREE
               </h3>
               <p className="text-white/90 text-sm">
-                Get immediate results in less than a month.
+                Get immediate results in less than a month
               </p>
             </div>
             <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
@@ -328,7 +300,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               </h3>
               <p className="text-gray-600 text-sm">
                 Master {subjectTitle.toLowerCase()} with 1:1 AI sessions with AI
-                tutor.
+                tutor
               </p>
             </div>
             <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
@@ -342,7 +314,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Lifetime Discount
               </h3>
               <p className="text-gray-600 text-sm">
-                Lock in early adopter benefits for life.
+                Lock in early adopter benefits for life
               </p>
             </div>
             <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
@@ -357,7 +329,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Certificate
               </h3>
               <p className="text-gray-600 text-sm">
-                Earn verified learning certificates.
+                Earn verified learning certificates
               </p>
             </div>
             <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
@@ -371,22 +343,20 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Shape the Future
               </h3>
               <p className="text-gray-600 text-sm">
-                Your feedback drives features & 1:1 sessions.
+                Your feedback drives features & 1:1 sessions
               </p>
             </div>
           </div>
           <div className="flex flex-col justify-center gap-2 my-10 w-full items-center">
             <Link
-              href="/join"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/beta/${subject}?join=beta`}
               className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors"
             >
               Join Beta for 100% FREE
             </Link>
 
             <p className="text-xs text-center text-gray-500">
-              No credit card required, Only 3 Spots left this week.
+              No credit card required, Only 3 Spots left this week
             </p>
           </div>
         </section>
@@ -398,7 +368,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               Listen from Themself
             </h2>
             <p className="text-lg text-gray-600">
-              Approved Parents from {subjectTitle} Beta Program.
+              Approved Parents from {subjectTitle} Beta Program
             </p>
           </div>
           <div className="relative overflow-hidden">
@@ -463,7 +433,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Apply</h3>
               <p className="text-gray-600">
                 Tell us about your child&apos;s learning goals + 15 minutes
-                google meet call.
+                screening call
               </p>
             </div>
             <div className="bg-pink-50 rounded-xl p-8">
@@ -472,7 +442,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Beta Approval
               </h3>
               <p className="text-gray-600">
-                Quick approval within 24 hours & gain access to dashboard.
+                Quick approval within 24 hours & gain access to dashboard
               </p>
             </div>
             <div className="bg-pink-50 rounded-xl p-8">
@@ -482,47 +452,56 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               </h3>
               <p className="text-gray-600">
                 Your Kid Begin learning {subjectTitle} with Our AI Tutor
-                Immediately.
+                Immediately
               </p>
             </div>
           </div>
           <div className="flex flex-col justify-center gap-2 my-10 w-full items-center">
             <Link
-              href="/join"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/beta/${subject}?join=beta`}
               className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors"
             >
               Join Beta for 100% FREE
             </Link>
 
             <p className="text-xs text-center text-gray-500">
-              No credit card required, Only 3 Spots left this week.
+              No credit card required, Only 3 Spots left this week
             </p>
           </div>
         </section>
 
-        {/* Bottom CTA Section */}
+        {/* Bottom CTA Section - 50/50 Image + Content */}
         <section className="max-w-6xl mx-auto  px-8 py-16 pb-40 lg:pb-40 lg:py-24">
-          <div className="rounded-2xl bg-red-600 shadow-lg md:p-24 p-10 text-center">
-            <h2 className="text-3xl lg:text-4xl font-nord font-bold text-white/90 mb-4">
-              Make Your Kids {subjectTitle} Ready Today!
-            </h2>
-            <p className="text-lg text-white/90 mb-8">
-              Unlock free access to world-class {subjectTitle.toLowerCase()}{" "}
-              tutoring powered by AI.
-            </p>
-            <Link
-              href="/join"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white font-nord text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg inline-block hover:bg-white/90 transition-colors"
-            >
-              Join FREE Beta Access
-            </Link>
-            <p className="text-xs text-white/60 mt-4">
-              No credit card required, Only 3 Spots left this week.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden shadow-lg">
+            {/* Left: Image */}
+            <div className="relative min-h-[300px] md:min-h-[420px]">
+              <Image
+                src={ctaPic1.src}
+                alt="Parent helping child learn"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            {/* Right: CTA Content */}
+            <div className="bg-red-600 md:p-24 p-10 text-center flex flex-col justify-center">
+              <h2 className="text-3xl lg:text-4xl font-nord font-bold text-white/90 mb-4">
+                Make Your Kids {subjectTitle} Ready Today!
+              </h2>
+              <p className="text-lg text-white/90 mb-8">
+                Unlock free access to world-class {subjectTitle.toLowerCase()}{" "}
+                tutoring powered by AI
+              </p>
+              <Link
+                href={`/beta/${subject}?join=beta`}
+                className="bg-white font-nord text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg inline-block hover:bg-white/90 transition-colors"
+              >
+                Join FREE Beta Access
+              </Link>
+              <p className="text-xs text-white/60 mt-4">
+                No credit card required, Only 3 Spots left this week
+              </p>
+            </div>
           </div>
         </section>
       </main>
@@ -559,6 +538,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
           </div>
         </div>
       </footer>
+
+      {/* Floating Join Button */}
+      <FloatingJoinButton />
     </>
   );
 }

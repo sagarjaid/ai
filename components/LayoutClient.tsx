@@ -68,7 +68,7 @@ const CrispChat = (): null => {
 // 4. CrispChat: Set Crisp customer chat support (see above)
 const ClientLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <div className="flex flex-col flex-grow min-h-full">
       {/* Show a progress bar at the top when navigating between pages */}
       <NextTopLoader color={config.colors.main} showSpinner={false} />
 
@@ -90,7 +90,7 @@ const ClientLayout = ({ children }: { children: ReactNode }) => {
 
       {/* Set Crisp customer chat support */}
       <CrispChat />
-    </>
+    </div>
   );
 };
 

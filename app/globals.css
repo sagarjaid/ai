@@ -45,10 +45,20 @@
   }
 }
 
+html {
+  height: 100%;
+}
+
 html,
 body {
   scroll-behavior: smooth !important;
   font-family: var(--font-main), sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 progress::-webkit-progress-value {
