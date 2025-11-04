@@ -37,6 +37,8 @@ export const metadata = getSEOTags({
   canonicalUrlRelative: "/",
 });
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const heroImages = [
     math1,
@@ -65,7 +67,7 @@ export default function Home() {
     science4,
     science5,
   ];
-  const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+  let randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
   return (
     <>
       {/* Header */}
