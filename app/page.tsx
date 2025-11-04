@@ -2,9 +2,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
-import heroImage from "@/app/coding.png";
 import logoMain from "@/app/logo-main.png";
 import logoLight from "@/app/logo-light.png";
+import math1 from "@/app/math-1.png";
+import math2 from "@/app/math-2.png";
+import math3 from "@/app/math-3.png";
+import math4 from "@/app/math-1.png";
+import math5 from "@/app/math-5.png";
+import ai1 from "@/app/ai-1.png";
+import ai2 from "@/app/ai-4.png";
+import ai3 from "@/app/ai-3.png";
+import ai4 from "@/app/ai-4.png";
+import ai5 from "@/app/ai-5.png";
+import coding1 from "@/app/coding-1.png";
+import coding2 from "@/app/coding-1.png";
+import coding3 from "@/app/coding-3.png";
+import coding4 from "@/app/coding-4.png";
+import coding5 from "@/app/coding-5.png";
+import english1 from "@/app/english-1.png";
+import english2 from "@/app/english-2.png";
+import english3 from "@/app/english-3.png";
+import english4 from "@/app/english-4.png";
+import english5 from "@/app/english-5.png";
+import science1 from "@/app/sci-1.png";
+import science2 from "@/app/sci-2.png";
+import science3 from "@/app/sci-3.png";
+import science4 from "@/app/sci-4.png";
+import science5 from "@/app/sci-5.png";
 
 export const metadata = getSEOTags({
   title: `${config.appName} - AI Tutor for Kids`,
@@ -14,6 +38,34 @@ export const metadata = getSEOTags({
 });
 
 export default function Home() {
+  const heroImages = [
+    math1,
+    math2,
+    math3,
+    math4,
+    math5,
+    ai1,
+    ai2,
+    ai3,
+    ai4,
+    ai5,
+    coding1,
+    coding2,
+    coding3,
+    coding4,
+    coding5,
+    english1,
+    english2,
+    english3,
+    english4,
+    english5,
+    science1,
+    science2,
+    science3,
+    science4,
+    science5,
+  ];
+  const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
   return (
     <>
       {/* Header */}
@@ -48,7 +100,7 @@ export default function Home() {
 
             <div className="aspect-[4/3] block md:hidden relative">
               <Image
-                src={heroImage.src}
+                src={randomImage}
                 alt="Child using laptop with AI tutor"
                 fill
                 className="object-cover"
@@ -133,7 +185,7 @@ export default function Home() {
               {/* Main Image */}
               <div className="aspect-[4/3]  relative">
                 <Image
-                  src={heroImage.src}
+                  src={randomImage}
                   alt="Child using laptop with AI tutor"
                   fill
                   className="object-cover"

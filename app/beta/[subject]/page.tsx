@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
-import codingImage from "@/app/coding.png";
+// Removed deprecated single images in favor of randomized set per subject
 import logoMain from "@/app/logo-main.png";
 import {
   Percent,
@@ -12,15 +12,52 @@ import {
   FanIcon,
   PyramidIcon,
 } from "lucide-react";
-import mathImage from "@/app/math.png";
-import aiImage from "@/app/ai.png";
-import scienceImage from "@/app/science.png";
-import englishImage from "@/app/english.png";
+// Base single images removed (math.png, ai.png, science.png, english.png, coding.png)
 import mathReviewImage from "@/app/math-review.png";
 import aiReviewImage from "@/app/ai-review.png";
 import scienceReviewImage from "@/app/science-review.png";
 import englishReviewImage from "@/app/english-review.png";
 import codingReviewImage from "@/app/coding-review.png";
+
+import math1 from "@/app/math-1.png";
+import math2 from "@/app/math-2.png";
+import math3 from "@/app/math-3.png";
+import math4 from "@/app/math-1.png";
+import math5 from "@/app/math-5.png";
+import ai1 from "@/app/ai-1.png";
+import ai2 from "@/app/ai-4.png";
+import ai3 from "@/app/ai-3.png";
+import ai4 from "@/app/ai-4.png";
+import ai5 from "@/app/ai-5.png";
+import coding1 from "@/app/coding-1.png";
+import coding2 from "@/app/coding-1.png";
+import coding3 from "@/app/coding-3.png";
+import coding4 from "@/app/coding-4.png";
+import coding5 from "@/app/coding-5.png";
+import english1 from "@/app/english-1.png";
+import english2 from "@/app/english-2.png";
+import english3 from "@/app/english-3.png";
+import english4 from "@/app/english-4.png";
+import english5 from "@/app/english-5.png";
+import science1 from "@/app/sci-1.png";
+import science2 from "@/app/sci-2.png";
+import science3 from "@/app/sci-3.png";
+import science4 from "@/app/sci-4.png";
+import science5 from "@/app/sci-5.png";
+
+// Helper: random subject image selector (1-5) per subject
+const getRandomSubjectImage = (subjectKey: string) => {
+  const subjectToImages: Record<string, any[]> = {
+    math: [math1, math2, math3, math4, math5],
+    english: [english1, english2, english3, english4, english5],
+    ai: [ai1, ai2, ai3, ai4, ai5],
+    coding: [coding1, coding2, coding3, coding4, coding5],
+    science: [science1, science2, science3, science4, science5],
+  };
+  const images = subjectToImages[subjectKey] || subjectToImages.math;
+  const index = Math.floor(Math.random() * images.length);
+  return images[index];
+};
 
 // Subject configuration
 const subjectConfig: Record<
@@ -31,7 +68,6 @@ const subjectConfig: Record<
     title: string;
     description: string;
     highlight?: string;
-    image: typeof mathImage;
     reviewImage: typeof mathReviewImage;
     reviewText: string;
     reviewAuthor: string;
@@ -43,7 +79,6 @@ const subjectConfig: Record<
     title: "Master Math with World's First AI Tutor",
     description:
       "Learn Mathematics with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
-    image: mathImage,
     reviewImage: mathReviewImage,
     reviewText:
       "Emma's math confidence has soared! The AI tutor makes learning fun and she's actually excited about homework now.",
@@ -55,7 +90,6 @@ const subjectConfig: Record<
     title: "Master English with World's First AI Tutor",
     description:
       "Learn English with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
-    image: englishImage,
     reviewImage: englishReviewImage,
     reviewText:
       "My daughter Mia went from struggling with reading to finishing her first chapter from a book. The progress is incredible!",
@@ -67,7 +101,6 @@ const subjectConfig: Record<
     title: "Master AI with the World's First AI Tutor",
     description:
       "Learn Artificial Intelligence with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
-    image: aiImage,
     reviewImage: aiReviewImage,
     reviewText:
       "Sameer is building his own AI projects now! The personalized approach has unlocked his creativity and problem-solving skills.",
@@ -80,7 +113,6 @@ const subjectConfig: Record<
     description:
       "Learn Coding with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
     highlight: "Block based - Grade 1-5, JavaScript Web dev - Grade 6-9",
-    image: codingImage,
     reviewImage: codingReviewImage,
     reviewText:
       "Well-structured courses have made coding fun for my son. I'm so glad I found this app.",
@@ -92,7 +124,6 @@ const subjectConfig: Record<
     title: "Master Science with World's First AI Tutor",
     description:
       "Learn Science with AI that adapts to your child's learning style, join beta today for 100% FREE and get immediate results in less than month.",
-    image: scienceImage,
     reviewImage: scienceReviewImage,
     reviewText:
       "Sophia asks more questions and understands concepts deeper. The AI tutor explains everything in ways that click for her.",
@@ -125,6 +156,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
     subject === "ai"
       ? "AI"
       : subject.charAt(0).toUpperCase() + subject.slice(1);
+  const subjectImage = getRandomSubjectImage(subjectKey);
 
   return (
     <>
@@ -159,7 +191,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
             {/* Left Column */}
             <div className="aspect-[4/3] block md:hidden relative rounded-lg overflow-hidden">
               <Image
-                src={subjectData.image.src}
+                src={subjectImage.src}
                 alt={`Child learning ${subjectTitle} with AI tutor`}
                 fill
                 className="object-cover"
@@ -230,7 +262,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
             <div className="relative hidden md:block">
               <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
                 <Image
-                  src={subjectData.image.src}
+                  src={subjectImage.src}
                   alt={`Child learning ${subjectTitle} with AI tutor`}
                   fill
                   className="object-cover"
