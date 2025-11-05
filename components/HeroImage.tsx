@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
 interface HeroImageProps {
@@ -8,27 +9,41 @@ interface HeroImageProps {
 }
 
 export default function HeroImage({ images }: HeroImageProps) {
-  // Use useState with lazy initializer to only run on client
-  const [randomImage, setRandomImage] = useState<any>(null);
+  const searchParams = useSearchParams();
+  const [selectedImage, setSelectedImage] = useState<any>(null);
 
   useEffect(() => {
-    // Only select random image on client side to avoid hydration mismatch
-    if (!randomImage) {
-      setRandomImage(images[Math.floor(Math.random() * images.length)]);
-    }
-  }, [images, randomImage]);
+    if (selectedImage) return;
 
-  // Show nothing or a placeholder during SSR and initial client render
-  if (!randomImage) {
-    return null;
-  }
+    const imgParam = searchParams?.get("img");
+    let imageToUse = null as any;
+
+    if (imgParam) {
+      const idx = Number.parseInt(imgParam, 10);
+      if (!Number.isNaN(idx)) {
+        // support 1-based and 0-based indices safely
+        const zeroBased = idx >= 1 ? idx - 1 : idx;
+        if (zeroBased >= 0 && zeroBased < images.length) {
+          imageToUse = images[zeroBased];
+        }
+      }
+    }
+
+    if (!imageToUse) {
+      imageToUse = images[Math.floor(Math.random() * images.length)];
+    }
+
+    setSelectedImage(imageToUse);
+  }, [images, searchParams, selectedImage]);
+
+  if (!selectedImage) return null;
 
   return (
     <>
       {/* Mobile Image - shown first on mobile, above content */}
       <div className="aspect-[4/3] block lg:hidden relative">
         <Image
-          src={randomImage}
+          src={selectedImage}
           alt="Child using laptop with AI tutor"
           fill
           className="object-cover"
@@ -41,7 +56,7 @@ export default function HeroImage({ images }: HeroImageProps) {
       <div className="relative hidden lg:block">
         <div className="aspect-[4/3] relative">
           <Image
-            src={randomImage}
+            src={selectedImage}
             alt="Child using laptop with AI tutor"
             fill
             className="object-cover"

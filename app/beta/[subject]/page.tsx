@@ -4,6 +4,7 @@ import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 import FloatingJoinButton from "@/components/FloatingJoinButton";
 import HeroImage from "@/components/HeroImage";
+import JoinBetaLink from "@/components/JoinBetaLink";
 // Removed deprecated single images in favor of randomized set per subject
 import logoMain from "@/app/logo-main.png";
 import {
@@ -166,12 +167,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               priority
             />
           </Link>
-          <Link
-            href={`/beta/${subject}?join=beta`}
-            className="bg-red-600 font-nord text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
-          >
+          <JoinBetaLink className="bg-red-600 font-nord text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors">
             Join Beta
-          </Link>
+          </JoinBetaLink>
         </nav>
       </header>
 
@@ -200,12 +198,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
               </p>
 
               <div className="flex flex-col justify-center gap-2 w-fit">
-                <Link
-                  href={`/beta/${subject}?join=beta`}
-                  className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors"
-                >
+                <JoinBetaLink className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors">
                   Join Beta for 100% FREE
-                </Link>
+                </JoinBetaLink>
 
                 <p className="text-xs text-center text-gray-500">
                   No credit card required, Only 3 Spots left this week
@@ -259,7 +254,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
           {/*  Benefits section */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
+            <div className="bg-pink-100  rounded-xl p-6 py-10 hover:bg-pink-200 cursor-pointer shadow transition-colors">
               <PyramidIcon
                 className="w-16 h-16 text-gray-900 mb-4"
                 strokeWidth={1.8}
@@ -273,7 +268,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Learn 6-8 core modules of {subjectTitle.toLowerCase()} with AI
               </p>
             </div>
-            <div className="bg-red-600 rounded-xl p-6 py-10">
+            <div className="bg-red-600 shadow cursor-pointer rounded-xl p-6 py-10">
               {/* <BadgeCheck */}
               <FanIcon
                 className="w-16 h-16 text-white/90 mb-3"
@@ -288,7 +283,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Get immediate results in less than a month
               </p>
             </div>
-            <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
+            <div className="bg-pink-100  rounded-xl p-6 py-10 hover:bg-pink-200 cursor-pointer shadow transition-colors">
               <VideoIcon
                 className="w-16 h-16 text-gray-900 mb-3"
                 strokeWidth={1.8}
@@ -303,7 +298,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 tutor
               </p>
             </div>
-            <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
+            <div className="bg-pink-100  rounded-xl p-6 py-10 hover:bg-pink-200 cursor-pointer shadow transition-colors">
               <Percent
                 className="w-16 h-16 text-gray-900 mb-3"
                 strokeWidth={1.8}
@@ -317,7 +312,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Lock in early adopter benefits for life
               </p>
             </div>
-            <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
+            <div className="bg-pink-100  rounded-xl p-6 py-10 hover:bg-pink-200 cursor-pointer shadow transition-colors">
               {/* <BadgeCheck */}
               <GraduationCap
                 className="w-16 h-16 text-gray-900 mb-3"
@@ -332,7 +327,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Earn verified learning certificates
               </p>
             </div>
-            <div className="bg-pink-50 rounded-xl p-6 py-10 hover:bg-pink-100 transition-colors">
+            <div className="bg-pink-100  rounded-xl p-6 py-10 hover:bg-pink-200 cursor-pointer shadow transition-colors">
               <Heart
                 className="w-16 h-16 text-gray-900 mb-3"
                 strokeWidth={1.8}
@@ -348,12 +343,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
             </div>
           </div>
           <div className="flex flex-col justify-center gap-2 my-10 w-full items-center">
-            <Link
-              href={`/beta/${subject}?join=beta`}
-              className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors"
-            >
+            <JoinBetaLink className="bg-red-600 font-nord text-white px-8 py-4 rounded-lg font-semibold text-lg w-fit hover:bg-red-700 transition-colors">
               Join Beta for 100% FREE
-            </Link>
+            </JoinBetaLink>
 
             <p className="text-xs text-center text-gray-500">
               No credit card required, Only 3 Spots left this week
@@ -362,7 +354,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
         </section>
         {/* Review Section */}
 
-        <section className="max-w-7xl mx-auto px-8 py-16 lg:py-24  bg-gradient-to-r from-white via-pink-50 to-white">
+        <section className="max-w-7xl mx-auto px-8 py-16 lg:py-24  bg-gradient-to-r from-white via-pink-100 to-white">
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-nord font-bold text-gray-900 mb-4">
               Listen from Themself
@@ -428,7 +420,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-pink-50 rounded-xl p-8">
+            <div className="bg-pink-100 hover:bg-pink-200 cursor-pointer shadow rounded-xl p-8">
               <div className="text-6xl font-bold text-red-600 mb-4">1</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Apply</h3>
               <p className="text-gray-600">
@@ -436,7 +428,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 screening call
               </p>
             </div>
-            <div className="bg-pink-50 rounded-xl p-8">
+            <div className="bg-pink-100 hover:bg-pink-200 cursor-pointer shadow rounded-xl p-8">
               <div className="text-6xl font-bold text-red-600 mb-4">2</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 Beta Approval
@@ -445,7 +437,7 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Quick approval within 24 hours & gain access to dashboard
               </p>
             </div>
-            <div className="bg-pink-50 rounded-xl p-8">
+            <div className="bg-pink-100 hover:bg-pink-200 cursor-pointer shadow rounded-xl p-8">
               <div className="text-6xl font-bold text-red-600 mb-4">3</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 Start Learning
@@ -492,12 +484,9 @@ export default async function BetaSubjectPage({ params }: PageProps) {
                 Unlock free access to world-class {subjectTitle.toLowerCase()}{" "}
                 tutoring powered by AI
               </p>
-              <Link
-                href={`/beta/${subject}?join=beta`}
-                className="bg-white font-nord text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg inline-block hover:bg-white/90 transition-colors"
-              >
+              <JoinBetaLink className="bg-white font-nord text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg inline-block hover:bg-white/90 transition-colors">
                 Join FREE Beta Access
-              </Link>
+              </JoinBetaLink>
               <p className="text-xs text-white/60 mt-4">
                 No credit card required, Only 3 Spots left this week
               </p>
