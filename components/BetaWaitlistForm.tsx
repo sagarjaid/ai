@@ -130,6 +130,7 @@ export default function BetaWaitlistForm({
             email: formData.email.trim(),
             phoneNumber: phoneNumber,
             country: formData.country,
+            grade: formData.grade,
             subject: formData.subject,
             currectUrl: currentUrl,
             date: currentDate,
