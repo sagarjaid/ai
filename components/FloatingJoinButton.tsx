@@ -22,14 +22,8 @@ export default function FloatingJoinButton() {
 
   const preselectedSubject = getSubjectFromPath();
 
-  // Track scroll position to show/hide button (except on homepage)
+  // Track scroll position to show/hide button
   useEffect(() => {
-    // Always show on homepage
-    if (pathname === "/") {
-      setIsScrolled(true);
-      return;
-    }
-
     const handleScroll = () => {
       // Show button when user has scrolled more than 100px
       setIsScrolled(window.scrollY > 100);

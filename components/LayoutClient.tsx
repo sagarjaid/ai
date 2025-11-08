@@ -1,13 +1,14 @@
 "use client";
 
-import { User } from "@supabase/supabase-js";
-import { createClient } from "@/libs/supabase/client";
-import { useEffect, useState, ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import { Crisp } from "crisp-sdk-web";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
+import { User } from "@supabase/supabase-js";
+import { createClient } from "@/libs/supabase/client";
 import config from "@/config";
 
 // Crisp customer chat support:
@@ -72,6 +73,14 @@ const ClientLayout = ({ children }: { children: ReactNode }) => {
       {/* Show a progress bar at the top when navigating between pages */}
       <NextTopLoader color={config.colors.main} showSpinner={false} />
 
+      {/* Google Analytics */}
+      {config.analytics?.measurementId ? (
+        <GoogleAnalytics
+          gaMeasurementId={config.analytics.measurementId}
+          trackPageViews
+        />
+      ) : null}
+
       {/* Content inside app/page.js files  */}
       {children}
 
@@ -89,7 +98,7 @@ const ClientLayout = ({ children }: { children: ReactNode }) => {
       />
 
       {/* Set Crisp customer chat support */}
-      <CrispChat />
+      {/* <CrispChat /> */}
     </div>
   );
 };

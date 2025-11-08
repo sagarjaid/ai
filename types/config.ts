@@ -30,6 +30,9 @@ export interface ConfigProps {
     id?: string;
     onlyShowOnRoutes?: string[];
   };
+  analytics?: {
+    measurementId?: string;
+  };
   stripe: {
     plans: {
       isFeatured?: boolean;
