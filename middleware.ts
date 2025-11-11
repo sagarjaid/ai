@@ -2,6 +2,13 @@ import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/libs/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname === "/join") {
+    return NextResponse.redirect(
+      "https://aiforjr.com/?join=beta",
+      308
+    );
+  }
+
   // Redirect exact /beta to /join
   if (request.nextUrl.pathname === "/beta") {
     return NextResponse.redirect(new URL("/join", request.url));
