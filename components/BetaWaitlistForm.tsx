@@ -107,34 +107,23 @@ export default function BetaWaitlistForm({
     setIsLoading(true);
 
     try {
-      // Prepare data for Sheety API
       const currentUrl =
         typeof window !== "undefined" ? window.location.href : "";
-      const currentDate = new Date().toISOString().split("T")[0]; // YYYY-MM-DD format
 
-      // Convert phone to number (remove all non-digits first)
-      const phoneNumber = parseInt(phoneDigits, 10);
-
-      const sheetyUrl =
-        "https://api.sheety.co/33d9ec27f5c7dfb130eb655baacab48d/aiforjrLeads/leads";
-
-      const response = await fetch(sheetyUrl, {
+      const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          lead: {
-            parentName: formData.name.trim(),
-            kidsName: formData.kidsName.trim(),
-            email: formData.email.trim(),
-            phoneNumber: phoneNumber,
-            country: formData.country,
-            grade: formData.grade,
-            subject: formData.subject,
-            currectUrl: currentUrl,
-            date: currentDate,
-          },
+          parentName: formData.name.trim(),
+          kidsName: formData.kidsName.trim(),
+          email: formData.email.trim(),
+          phone: phoneDigits,
+          country: formData.country,
+          grade: formData.grade,
+          subject: formData.subject,
+          currentUrl,
         }),
       });
 
@@ -144,9 +133,6 @@ export default function BetaWaitlistForm({
           errorData.error || `HTTP error! status: ${response.status}`
         );
       }
-
-      const result = await response.json();
-      console.log("Sheety API response:", result);
 
       toast.success("Beta submission successful!");
       onClose();
