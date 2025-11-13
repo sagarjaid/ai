@@ -141,7 +141,7 @@ export default function FloatingJoinButton() {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-hidden">
-            <div className="flex h-full justify-end">
+            <div className="flex h-[100dvh] md:h-full justify-end">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-300"
@@ -151,7 +151,7 @@ export default function FloatingJoinButton() {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative w-full max-w-lg md:max-w-xl h-full bg-white shadow-xl flex flex-col">
+                <Dialog.Panel className="relative w-full max-w-lg md:max-w-xl h-[100dvh] md:h-full bg-white shadow-xl flex flex-col">
                   {/* Form Content */}
                   <div className="flex-1 overflow-y-auto min-h-0">
                     <BetaWaitlistForm

@@ -16,8 +16,10 @@ const COUNTRIES = [
   "UK",
   "Canada",
   "India",
-  "Philippines/ Indonesia",
-  "Australia / New Zealand",
+  "Philippines",
+  "Indonesia",
+  "Australia",
+  "New Zealand",
   "Middle East",
   "Rest of the World*",
 ];
@@ -38,7 +40,7 @@ const GRADES = [
 const SUBJECTS = [
   { id: "coding", label: "Coding" },
   { id: "math", label: "Math" },
-  { id: "ai", label: "Artificial Intelligence" },
+  { id: "ai", label: "AI" },
   { id: "english", label: "English" },
   { id: "science", label: "Science" },
   { id: "other", label: "Other" },
@@ -315,7 +317,13 @@ export default function BetaWaitlistForm({
                     key={country}
                     type="button"
                     onClick={() => handleCountrySelect(country)}
-                    className={`relative px-2 py-2 md:px-3 md:py-2 rounded-lg border font-regular text-xs md:text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer ${
+                    className={`relative px-2 py-2 md:px-3 md:py-2 rounded-lg border font-regular text-xs md:text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer w-full ${
+                      country === "Rest of the World*"
+                        ? "col-span-3 lg:col-span-2"
+                        : country === "Middle East"
+                        ? "lg:col-span-2"
+                        : ""
+                    } ${
                       formData.country === country
                         ? "bg-red-600 text-white border-red-600"
                         : "bg-white text-gray-900 border-gray-200 hover:border-black"
@@ -329,7 +337,16 @@ export default function BetaWaitlistForm({
                         />
                       </div>
                     )}
-                    <span>{country}</span>
+                    <span
+                      className={
+                        country === "Rest of the World*" ||
+                        country === "Middle East"
+                          ? "whitespace-nowrap"
+                          : ""
+                      }
+                    >
+                      {country}
+                    </span>
                   </button>
                 ))}
               </div>

@@ -13,5 +13,7 @@ module.exports = {
      "/beta/**",
     "/apple-icon.png",
     "/join",
+    "/wa",
+    "/wa/**",
   ],
 };
